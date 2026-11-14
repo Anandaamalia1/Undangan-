@@ -266,50 +266,52 @@ function resetInterval() {
 }
 
 /* ==========================================================================
-   7. KONTROL MUSIK & ROTASI VINYL (FINAL AUTOPLAY & TOMBOL AMAN)
+   KONTROL MUSIK & ROTASI VINYL (FINAL LENGKAP & STABIL)
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById('bgMusic');
     const vinyl = document.getElementById('vinylRecord');
     const playPauseIcon = document.getElementById('playPauseIcon');
 
-    function startMusicAndSpin() {
-        if (!music) return;
-        
+    // Fungsi universal untuk memutar musik dan menyalakan animasi putar vinyl
+    function triggerVinylSpin() {
+        if (vinyl) {
+            vinyl.classList.add('playing');
+        }
+        if (playPauseIcon) {
+            playPauseIcon.innerHTML = '&#10074;&#10074;';
+        }
+    }
+
+    // 1. Cek jika status dari halaman pembuka mengizinkan autoplay musik
+    if (music && localStorage.getItem('playMusic') === 'true') {
         music.play().then(() => {
-            if (vinyl) {
-                vinyl.classList.add('playing');
-                // PAKSA PUTAR OTOMATIS SAAT AUTOPLAY PERTAMA KALI
-                vinyl.style.animation = "spinVinylFinal 3.5s linear infinite";
-                const img = vinyl.querySelector('img');
-                if (img) img.style.animation = "spinVinylFinal 3.5s linear infinite";
-            }
-            if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
-            localStorage.setItem('playMusic', 'true');
+            triggerVinylSpin();
         }).catch(err => {
-            console.log("Autoplay diblokir browser, menunggu interaksi:", err);
+            console.log("Autoplay diblokir browser, menunggu interaksi sentuhan:", err);
         });
     }
 
-    // Jika status dari halaman pembuka mengizinkan musik
-    if (music && localStorage.getItem('playMusic') === 'true') {
-        startMusicAndSpin();
-    }
-
-    // Trik pemicu sentuhan pertama jika autoplay diblokir
-    const triggerPlay = function(e) {
-        startMusicAndSpin();
-        document.removeEventListener('click', triggerPlay);
-        document.removeEventListener('scroll', triggerPlay);
-        document.removeEventListener('touchstart', triggerPlay);
+    // 2. Trik pemicu sentuhan pertama jika autoplay diblokir oleh kebijakan browser HP/Safari
+    const handleFirstInteraction = function() {
+        if (music) {
+            music.play().then(() => {
+                triggerVinylSpin();
+                localStorage.setItem('playMusic', 'true');
+            }).catch(e => console.log("Gagal memutar audio:", e));
+        }
+        // Hapus listener setelah sentuhan pertama berhasil
+        document.removeEventListener('click', handleFirstInteraction);
+        document.removeEventListener('scroll', handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
     };
 
-    document.addEventListener('click', triggerPlay);
-    document.addEventListener('scroll', triggerPlay);
-    document.addEventListener('touchstart', triggerPlay);
+    document.addEventListener('click', handleFirstInteraction);
+    document.addEventListener('scroll', handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
 });
 
-// Fungsi Tombol Play / Pause (Mencegah halaman melompat ke bawah)
+// Fungsi Tombol Play / Pause (Mencegah halaman melompat ke bawah & mengatur putaran vinyl)
 function toggleMusic(event) {
     if (event) {
         event.preventDefault(); // MENCEGAH HALAMAN SCROLL/MELOMPAT KE BAWAH
@@ -324,12 +326,11 @@ function toggleMusic(event) {
     if (music.paused) {
         music.play().then(() => {
             if (vinyl) {
-                vinyl.classList.add('playing');
-                vinyl.style.animation = "spinVinylFinal 3.5s linear infinite";
-                const img = vinyl.querySelector('img');
-                if (img) img.style.animation = "spinVinylFinal 3.5s linear infinite";
+                vinyl.classList.add('playing'); // Menyalakan putaran vinyl
             }
-            if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
+            if (playPauseIcon) {
+                playPauseIcon.innerHTML = '&#10074;&#10074;';
+            }
             localStorage.setItem('playMusic', 'true');
         }).catch(err => {
             console.log("Gagal memutar musik:", err);
@@ -337,12 +338,11 @@ function toggleMusic(event) {
     } else {
         music.pause();
         if (vinyl) {
-            vinyl.classList.remove('playing');
-            vinyl.style.animation = "none";
-            const img = vinyl.querySelector('img');
-            if (img) img.style.animation = "none";
+            vinyl.classList.remove('playing'); // Menghentikan putaran vinyl di tempat (tidak melompat)
         }
-        if (playPauseIcon) playPauseIcon.innerHTML = '&#9658;';
+        if (playPauseIcon) {
+            playPauseIcon.innerHTML = '&#9658;';
+        }
         localStorage.setItem('playMusic', 'false');
     }
 }
