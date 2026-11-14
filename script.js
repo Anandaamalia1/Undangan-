@@ -265,37 +265,40 @@ function resetInterval() {
     startSlideshow();
 }
 
-
 /* ==========================================================================
-   7. KONTROL MUSIK EKSKLUSIF & ROTASI VINYL (FINAL & ANTI-GAGAL)
+   7. KONTROL MUSIK & ROTASI VINYL (FINAL AUTOPLAY & TOMBOL AMAN)
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById('bgMusic');
     const vinyl = document.getElementById('vinylRecord');
     const playPauseIcon = document.getElementById('playPauseIcon');
 
-    // Fungsi helper untuk menyalakan musik dan memutar vinyl secara bersamaan
     function startMusicAndSpin() {
         if (!music) return;
         
         music.play().then(() => {
-            if (vinyl) vinyl.classList.add('playing');
+            if (vinyl) {
+                vinyl.classList.add('playing');
+                // PAKSA PUTAR OTOMATIS SAAT AUTOPLAY PERTAMA KALI
+                vinyl.style.animation = "spinVinylFinal 3.5s linear infinite";
+                const img = vinyl.querySelector('img');
+                if (img) img.style.animation = "spinVinylFinal 3.5s linear infinite";
+            }
             if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
             localStorage.setItem('playMusic', 'true');
         }).catch(err => {
-            console.log("Autoplay dicegah oleh browser, menunggu interaksi pengguna:", err);
+            console.log("Autoplay diblokir browser, menunggu interaksi:", err);
         });
     }
 
-    // Cek apakah status dari halaman pembuka/sebelumnya mengizinkan musik diputar
+    // Jika status dari halaman pembuka mengizinkan musik
     if (music && localStorage.getItem('playMusic') === 'true') {
         startMusicAndSpin();
     }
 
-    // Jika autoplay diblokir browser, aktifkan pemicu sentuhan pertama di layar (khusus HP/Safari)
-    const triggerPlay = function() {
+    // Trik pemicu sentuhan pertama jika autoplay diblokir
+    const triggerPlay = function(e) {
         startMusicAndSpin();
-        // Hapus listener setelah berhasil merespons sentuhan pertama
         document.removeEventListener('click', triggerPlay);
         document.removeEventListener('scroll', triggerPlay);
         document.removeEventListener('touchstart', triggerPlay);
@@ -306,8 +309,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('touchstart', triggerPlay);
 });
 
-// Fungsi untuk tombol Play / Pause (ikon iPod)
-function toggleMusic() {
+// Fungsi Tombol Play / Pause (Mencegah halaman melompat ke bawah)
+function toggleMusic(event) {
+    if (event) {
+        event.preventDefault(); // MENCEGAH HALAMAN SCROLL/MELOMPAT KE BAWAH
+    }
+
     const music = document.getElementById('bgMusic');
     const vinyl = document.getElementById('vinylRecord');
     const playPauseIcon = document.getElementById('playPauseIcon');
@@ -316,7 +323,12 @@ function toggleMusic() {
 
     if (music.paused) {
         music.play().then(() => {
-            if (vinyl) vinyl.classList.add('playing');
+            if (vinyl) {
+                vinyl.classList.add('playing');
+                vinyl.style.animation = "spinVinylFinal 3.5s linear infinite";
+                const img = vinyl.querySelector('img');
+                if (img) img.style.animation = "spinVinylFinal 3.5s linear infinite";
+            }
             if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
             localStorage.setItem('playMusic', 'true');
         }).catch(err => {
@@ -324,7 +336,12 @@ function toggleMusic() {
         });
     } else {
         music.pause();
-        if (vinyl) vinyl.classList.remove('playing');
+        if (vinyl) {
+            vinyl.classList.remove('playing');
+            vinyl.style.animation = "none";
+            const img = vinyl.querySelector('img');
+            if (img) img.style.animation = "none";
+        }
         if (playPauseIcon) playPauseIcon.innerHTML = '&#9658;';
         localStorage.setItem('playMusic', 'false');
     }
