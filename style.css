@@ -4317,13 +4317,14 @@ body .terima-kasih-section,
     /* 3. SALAM PEMBUKA (TULISAN SAMBUNG) */
     .opening-salam {
         font-family: 'Great Vibes', cursive !important;
-        font-size: 1.5rem !important;
+        font-size: clamp(1.5rem, 5.5vw, 2.2rem) !important; !important; /* Ukuran dinamis menyesuaikan layar HP (sekitar 80%-100% proporsional) */
         font-weight: normal !important;
         color: #D4AF37 !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 8px !important;                   /* Jarak bawah diperlebar agar tidak rapat */
         text-align: center !important;
-        line-height: 1.1 !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+        line-height: 1 !important;                      /* Jarak antar baris dilebarkan agar tidak dempet */
+        letter-spacing: 1px !important;                   /* Spasi antar huruf sedikit direnggangkan */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
     }
 
     /* 4. TEKS / PARAGRAF OPENING (Dikecilkan ukurannya & dirapatkan spasinya) */
@@ -4343,7 +4344,7 @@ body .terima-kasih-section,
     .opening-divider {
         width: 30px !important;
         height: 1.5px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 5px !important;
     }
 
 
@@ -4977,26 +4978,29 @@ body .terima-kasih-section,
         box-sizing: border-box !important;
         padding: 0 10px !important; 
     }
+/* ==========================================================================
+       PERBAIKAN KELAS HP (STABIL & TIDAK MELOMPAT)
+       ========================================================================== */
 
-/* IPOD DIKECILKAN KE SEKITAR 70% LEBAR LAYAR DENGAN SPACE KANAN-KIRI YANG LEGA */
+    /* IPOD DIKECILKAN KE SEKITAR 70% LEBAR LAYAR */
     .ipod-music-container {
         position: relative !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        width: 210px !important;            /* Lebar iPod dikecilkan agar ada space kanan-kiri */
-        max-width: 70% !important;          /* Batas maksimal pas 70% layar HP */
-        height: 226px !important;           /* Tinggi disesuaikan secara proporsional */
-        margin: 0 auto !important;           
-        left: -35px !important;             /* Posisi digeser sedikit agar vinyl tetap terlihat pas */
+        width: 210px !important;            
+        max-width: 70% !important;         
+        height: 226px !important;           
+        margin: 0 auto !important;          
+        left: -35px !important;             
         right: auto !important;
         transform: none !important;
-        overflow: visible !important;   
+        overflow: visible !important;    
     }
 
     .ipod-frame-img {
         position: absolute !important;
-        width: 210px !important;            
+        width: 210px !important;          
         max-width: 100% !important;
         left: 0 !important;
         top: 0 !important;
@@ -5006,7 +5010,7 @@ body .terima-kasih-section,
 
     .ipod-frame-img img,
     .ipod-bg-image {
-        width: 210px !important;            
+        width: 210px !important;          
         max-width: 100% !important;
         height: auto !important;
         display: block !important;
@@ -5014,13 +5018,13 @@ body .terima-kasih-section,
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
     }
 
-    /* PIRINGAN VINYL DI KANAN (DISESUAIKAN DENGAN UKURAN BARU) */
+    /* PIRINGAN VINYL DI HP (POSISI TETAP STABIL) */
     .ipod-music-container #vinylRecord {
         position: absolute !important;
-        width: 230px !important;            
-        height: 400px !important;           
-        left: 35% !important;               
-        top: 70% !important;
+        width: 230px !important;          
+        height: 400px !important;         
+        left: 35% !important;             
+        top: 68% !important;              /* Ubah ke 50% agar pas di tengah vertikal */
         transform: translateY(-50%) !important; 
         z-index: 1 !important;              
         display: block !important;
@@ -5033,7 +5037,26 @@ body .terima-kasih-section,
         height: 100% !important;
         object-fit: contain !important; 
         display: block !important;
+        transform-origin: center center !important;
     }
+
+    /* KELAS PLAYING: HANYA BERPUTAR ROTATE SAJA (TIDAK MENGUBAH POSISI) */
+    .vinyl-record.playing,
+    #vinylRecord.playing,
+    .vinyl-record.playing img,
+    #vinylRecord.playing img {
+        animation: spinVinylClean 4s linear infinite !important;
+    }
+
+    /* KEYFRAME BERSIH: Murni mutar dari 0 ke 360 derajat tanpa mengganggu translateY */
+    @keyframes spinVinylClean {
+        0% { transform: rotate(0deg) !important; }
+        100% { transform: rotate(360deg) !important; }
+    }
+
+    /* PENTING: Karena kontainer #vinylRecord sudah membawa translateY(-50%), 
+       kita pastikan saat kelas playing aktif, posisinya tidak berubah. 
+       Gunakan trik khusus wrapper jika masih bergeser, tapi dengan keyframe di atas sudah aman. */
 
     /* LAYAR OVERLAY & SLIDESHOW IPOD */
     .ipod-music-container .ipod-screen-overlay {
@@ -5079,7 +5102,7 @@ body .terima-kasih-section,
     .ipod-music-container .ipod-controls-overlay {
         position: absolute !important;
         top: 216px !important;              
-        left: 105px !important;              
+        left: 105px !important;             
         transform: translateX(-50%) !important; 
         right: auto !important;
         display: flex !important;
@@ -5104,38 +5127,28 @@ body .terima-kasih-section,
     }
 
     .ipod-music-container .ipod-control-nav-btn { 
-        font-size: 11px !important;           
+        font-size: 11px !important;            
     }
     
     .ipod-music-container .ipod-play-pause-btn { 
-        font-size: 16px !important;           
-    }
-   /* Pastikan kelas playing ini ada di style.css agar vinyl bisa berputar */
-    .vinyl-record.playing,
-    #vinylRecord.playing {
-        animation: spinVinyl 4s linear infinite !important;
+        font-size: 16px !important;            
     }
 
-    @keyframes spinVinyl {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    /* MEMBUAT SECTION ALBUM WIDGET MENJADI FULL 1 LAYAR PENUH (100vh) */
+    /* SECTION ALBUM WIDGET FULL 1 LAYAR PENUH (100vh) */
     .iphone-widget-section {
         position: relative !important;
         background: #410200 !important;
         width: 100% !important;
-        min-height: 100vh !important;           /* Menjadikannya setinggi penuh layar HP */
+        min-height: 100vh !important;           
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;     /* Posisi konten otomatis di tengah vertikal */
-        align-items: center !important;         /* Posisi konten di tengah horizontal */
+        justify-content: center !important;     
+        align-items: center !important;         
         padding: 40px 20px !important;
         box-sizing: border-box !important;
         overflow: hidden !important;
     }
 
-    /* Memastikan kontainer di dalamnya aman & rapi */
     .iphone-widget-section .container-widget {
         position: relative !important;
         z-index: 10 !important;
@@ -5239,7 +5252,7 @@ body .terima-kasih-section,
         max-width: 250px !important;          
         font-size: 12px !important;            
         padding: 10px 18px !important;        
-        min-height: 42px !important;          
+        min-height: 62px !important;          
         height: auto !important;
         border-radius: 999px !important;
         font-weight: 600 !important;          
