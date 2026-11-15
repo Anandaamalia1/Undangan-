@@ -17,12 +17,16 @@
 }
 
 html{
+   -webkit-text-size-adjust: 100% !important; /* Mencegah Android memperbesar teks otomatis */
+    text-size-adjust: 100% !important;
     scroll-behavior:smooth;
+   
 }
 
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
     background-color: #410200; /* Disesuaikan ke merah baru */
     font-family: 'Montserrat', sans-serif !important;
     overflow-x: hidden;
