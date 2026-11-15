@@ -719,7 +719,7 @@ h2, .mempelai-name {
 
 .acara-section h2 {
     text-align: center !important;
-    font-size: 2.8rem !important;
+    font-size: 1.8rem !important;
     margin-bottom: 10px !important;
     color: #D4AF37 !important;
 }
@@ -728,10 +728,14 @@ h2, .mempelai-name {
     text-align: center !important;
     color: #FFF1cf !important;
     margin-bottom: 30px !important;
-    line-height: 1.7 !important;
+    line-height: 1.2 !important;
     max-width: 500px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.section-description-acara p{
+
 }
 
 .acara-grid {
@@ -1597,7 +1601,7 @@ h2, .mempelai-name {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 13px;
+    font-size: 11px;
 }
 
 /* =========================
@@ -2386,7 +2390,7 @@ h2, .mempelai-name {
 /* Nama Mempelai dengan Huruf Sambung/Elegan */
 .thank-you-couple-names {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.6rem;
+    font-size: 2.3rem;
     color: #FFF1cf;
     margin-bottom: 30px;
     font-weight: normal;
@@ -2413,7 +2417,7 @@ h2, .mempelai-name {
 .section-badge-galeri,
 .section-badge-rsvp,
 [class*="section-badge"] {
-    font-size: 14px !important;    /* Ukuran font diperkecil (silakan ubah misal jadi 0.8rem atau 0.9rem) */
+    font-size: 12px !important;    /* Ukuran font diperkecil (silakan ubah misal jadi 0.8rem atau 0.9rem) */
     letter-spacing: 1.5px !important; /* Jarak antar huruf agar tetap estetik */
     margin-bottom: 8px !important;    /* Jarak ke judul di bawahnya */
     font-weight: 600 !important;
@@ -4331,7 +4335,7 @@ body .terima-kasih-section,
     body p.opening-text,
     .opening-section p.opening-text,
     p.opening-text {
-        font-size: 12px !important;            /* Sesuaikan ukuran font (misal 11px agar pas dan tidak terlalu besar) */
+        font-size: 10.5px !important;            /* Sesuaikan ukuran font (misal 11px agar pas dan tidak terlalu besar) */
         line-height: 1.2 !important;          
         max-width: 80% !important;            /* Lebar diperkecil dari 88% jadi 80% agar ada jarak di kiri-kanan */
         padding: 0 5px !important;           /* Menambahkan jarak aman (padding) kiri-kanan */
@@ -4382,7 +4386,7 @@ body .terima-kasih-section,
     .mempelai-section .mempelai-main-title {
         width: 100% !important;
         text-align: center !important;
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
         margin-bottom: 6px !important;
         color: #D4AF37 !important;
         font-family: 'Great Vibes', cursive !important;
@@ -4394,9 +4398,9 @@ body .terima-kasih-section,
         text-align: center !important;
         color: #FFF1cf !important;
         max-width: 95% !important;
-        margin: 0 auto 45px auto !important;
-        line-height: 1.35 !important;
-        font-size: 13px !important;
+        margin: 0 auto 65px auto !important;
+        line-height: 1.2 !important;
+        font-size: 11px !important;
         padding: 0 10px !important;
         box-sizing: border-box !important;
     }
@@ -4405,13 +4409,13 @@ body .terima-kasih-section,
     .mempelai-wrapper {
         display: flex !important;
         flex-direction: column !important;
-        gap: 14px !important;
+        gap: 25px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
         position: relative !important;
         z-index: 2 !important; 
-        padding: 0 48px 40px 48px !important; /* Diperbesar menjadi 48px agar sisi kanan-kirinya punya space kosong yang luas */
+        padding: 0 48px 100px 48px !important; /* Diperbesar menjadi 48px agar sisi kanan-kirinya punya space kosong yang luas */
         align-items: center !important; 
         box-sizing: border-box !important;
     }
@@ -4646,8 +4650,8 @@ body .terima-kasih-section,
 
     /* TEKS ARAB DI HP (Disesuaikan agar rapi dan tidak terlalu lebar) */
     .arabic-text {
-        font-size: 0.88rem !important;         
-        line-height: 1.55 !important;          
+        font-size: 0.85rem !important;         
+        line-height: 1.2 !important;          
         margin-bottom: 8px !important;       
         color: #3b110e !important;            
         text-align: center !important;
@@ -4718,21 +4722,20 @@ body .terima-kasih-section,
         margin: 0 auto !important;
         width: 100% !important;
     }
-
-/* KARTU ACARA DIKECILKAN MENJADI SEKITAR 65% DARI LAYAR HP */
+/* KARTU ACARA DIKECILKAN LEBIH COMPACT / KECIL */
     .acara-card {
         position: relative !important;
         flex: 0 0 auto !important;
-        width: 60% !important;                 /* Lebar kartu disetel pas 65% dari layar HP */
-        max-width: 200px !important;           /* Batas maksimal agar tetap rapi */
-        min-height: 180px !important;
+        width: 70% !important;                  /* Lebar kartu dikecilkan lagi menjadi sekitar 70% */
+        max-width: 230px !important;            /* Batas maksimal diperkecil agar mungil dan rapi */
+        min-height: 170px !important;
         height: auto !important;
         background: url('paperland.png') no-repeat center center / 100% 100% !important;
         border: none !important;
         border-radius: 0 !important;
         
-        /* Padding dalam disesuaikan dengan proporsi baru */
-        padding: 16px 20px 16px 22px !important;       
+        /* Padding dalam diperkecil agar proporsional dengan ukuran baru */
+        padding: 14px 16px 14px 18px !important;       
         text-align: center !important;
         box-shadow: none !important;
         display: flex !important;
@@ -4740,17 +4743,17 @@ body .terima-kasih-section,
         align-items: center !important;
         justify-content: flex-start !important;
         box-sizing: border-box !important;
-        margin: 0 auto !important;             /* Posisi otomatis di tengah (center) */
+        margin: 0 auto !important;              
     }
 
     .acara-card h3 {
         color: #410200 !important;
-        font-size: 1.45rem !important;         /* Judul akad/resepsi disesuaikan dengan ukuran 65% */
-        margin-top: 15px !important;
+        font-size: 1.2rem !important;         /* Judul akad/resepsi dikecilkan lagi */
+        margin-top: 18px !important;
         margin-bottom: 10px !important;
         border-bottom: none !important;
         padding-bottom: 0 !important;
-        text-shadow: 0 1px 3px rgba(255, 241, 207, 0.8) !important;
+        text-shadow: 0 1px 2px rgba(255, 241, 207, 0.8) !important;
         text-align: center !important;
         width: 100% !important;
         font-family: 'Great Vibes', cursive;
@@ -4759,14 +4762,14 @@ body .terima-kasih-section,
     .acara-detail-info {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2px !important;                
+        gap: 2px !important;                    
         text-align: left !important;
-        font-size: 10px !important;          /* Ukuran font info dirapikan agar pas dan muat sempurna */
+        font-size: 10px !important;            /* Tulisan di dalam kartu dibuat lebih kecil dan rapi */
         color: #410200 !important;
-        text-shadow: 0 1px 3px rgba(255, 241, 207, 0.8) !important;
+        text-shadow: 0 1px 2px rgba(255, 241, 207, 0.8) !important;
         
         width: 100% !important;
-        max-width: 190px !important;          /* Batas lebar teks dalam kartu */
+        max-width: 190px !important;           /* Batas lebar teks disesuaikan dengan ukuran kartu yang lebih kecil */
         margin: 0 auto !important;
         word-wrap: break-word !important;
         box-sizing: border-box !important;
@@ -4817,44 +4820,52 @@ body .terima-kasih-section,
         line-height: 1.4 !important;
     }
 
-    /* Kotak Hitung Mundur di HP (Disusun 2x2 atau pas berjajar) */
+   /* Kontainer Hitung Mundur: Ditambahkan jarak kanan-kiri (padding/margin) agar tidak mepet ujung */
     .countdown-box {
-        gap: 10px !important; 
-        margin-bottom: 20px !important;
+        display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
+        gap: 8px !important;                 /* Jarak antar kotak diperkecil sedikit */
+        margin-bottom: 20px !important;
+        padding-left: 15px !important;       /* Jarak aman sisi kiri */
+        padding-right: 15px !important;      /* Jarak aman sisi kanan */
+        box-sizing: border-box !important;
+        width: 100% !important;
     }
 
+    /* Kotak Item Countdown Dikecilkan Lagi */
     .countdown-item {
         position: relative !important;
         background: url('paper.png') no-repeat center center !important;
         background-size: 100% 100% !important; 
         border: none !important;
         border-radius: 0 !important;    
-        min-width: 70px !important;             /* Lebar diperkecil agar pas di layar HP */
-        height: 90px !important;                /* Tinggi diperkecil proporsional */
-        padding: 10px 5px !important;
+        min-width: 58px !important;          /* Lebar kotak dikecilkan lagi agar lebih mungil */
+        height: 75px !important;             /* Tinggi kotak disesuaikan secara proporsional */
+        padding: 6px 4px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         overflow: hidden !important;
         box-sizing: border-box !important;
     }
 
+    /* Ukuran Angka Countdown */
     .countdown-item span:first-child {
-        font-size: 1.5rem !important;           /* Angka countdown disesuaikan untuk HP */
+        font-size: 1.25rem !important;       /* Angka dikecilkan proporsional */
         font-weight: 700;
         color: #410200 !important;
         text-shadow: 0 1px 2px rgba(255, 241, 207, 0.8);
         line-height: 1 !important;
     }
 
+    /* Label Hari/Jam/Menit/Detik */
     .countdown-label {
-        font-size: 8.5px !important;            /* Label hari/jam/menit disesuaikan */
+        font-size: 7.5px !important;         /* Label teks diperkecil agar rapi di kotak mungil */
         color: #410200 !important;
-        margin-top: 4px !important;
+        margin-top: 3px !important;
         text-transform: uppercase;
         font-weight: 700;
         text-shadow: 0 1px 2px rgba(255, 241, 207, 0.8);
@@ -4864,9 +4875,9 @@ body .terima-kasih-section,
     .btn-calendar {
         --btn-width-hp: 200px !important;
         --btn-height-hp: 40px !important;
-        --btn-font-hp: 12px !important;
-        max-width: 260px !important;
-        height: 60px !important;
+        --btn-font-hp: 9.5px !important;
+        max-width: 250px !important;
+        height: 62px !important;
         max-height: 60px !important;
         padding: 0 15px !important;
         font-size: 12px !important;
@@ -5108,7 +5119,7 @@ body .terima-kasih-section,
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 28px !important;               
+        gap: 29px !important;               
         z-index: 4 !important;
     }
 
@@ -5127,11 +5138,11 @@ body .terima-kasih-section,
     }
 
     .ipod-music-container .ipod-control-nav-btn { 
-        font-size: 11px !important;            
+        font-size: 12px !important;            
     }
     
     .ipod-music-container .ipod-play-pause-btn { 
-        font-size: 16px !important;            
+        font-size: 12px !important;            
     }
 
     /* SECTION ALBUM WIDGET FULL 1 LAYAR PENUH (100vh) */
@@ -5324,9 +5335,9 @@ body .terima-kasih-section,
     .lokasi-section button.btn-maps {
         width: 100% !important;
         max-width: 250px !important;          
-        font-size: 12px !important;            
+        font-size: 9.5px !important;            
         padding: 14px 18px !important;        
-        min-height: 50px !important;          
+        min-height: 62px !important;          
         height: auto !important;
         border-radius: 999px !important;
         font-weight: 600 !important;
@@ -5348,7 +5359,7 @@ body .terima-kasih-section,
     }
 
     .amplop-section h2 {
-        font-size: 2.3rem !important;           
+        font-size: 1.8rem !important;           
         margin-bottom: 10px !important;
         text-align: center !important;
         color: #D4AF37 !important;
@@ -5399,13 +5410,13 @@ body .terima-kasih-section,
     }
 
     .amplop-section .atm-value {
-        font-size: 10px !important;           
+        font-size: 9px !important;           
         white-space: nowrap !important;       
     }
 
     .amplop-section .btn-copy {
-        padding: 2px 9px !important;         
-        font-size: 9.5px !important;           
+        padding: 2px 4px !important;         
+        font-size: 7.5px !important;           
         border-radius: 14px !important;
         white-space: nowrap !important;
     }
@@ -5656,12 +5667,12 @@ body .terima-kasih-section,
         border: none !important;
         border-radius: 999px !important;
         width: 100% !important;
-        max-width: 220px !important;          
+        max-width: 250px !important;          
         margin: 18px auto 0 auto !important;
         padding: 0 16px !important;
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
-        font-size: 12px !important;            
+        font-size: 9.5px !important;            
         cursor: pointer !important;
         display: flex !important;
         justify-content: center !important;
@@ -5670,7 +5681,7 @@ body .terima-kasih-section,
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
         box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4) !important;
         
-        height: 46px !important;            
+        height: 62px !important;            
         min-height: 46px !important;
         max-height: 46px !important;
         box-sizing: border-box !important;
@@ -5973,7 +5984,7 @@ body .terima-kasih-section,
     .terima-kasih-section h2,
     .ucapan-section h2,
     .mempelai-main-title {
-        font-size: 2.3rem !important;
+        font-size: 1.8rem !important;
         margin-bottom: 6px !important;
         color: #D4AF37 !important;
         text-align: center !important;
@@ -5997,12 +6008,12 @@ body .terima-kasih-section,
     .mempelai-section p,
     .doa-section p:not(.arabic-text):not(.translation-text):not(.doa-source), 
     .opening-section p {
-        font-size: 13px !important;
+        font-size: 11px !important;
         max-width: 90% !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        margin-bottom: 30px !important;
-        line-height: 1.4 !important;
+        margin-bottom: 50px !important;
+        line-height: 1.2 !important;
         color: #FFF1cf !important;          
         text-align: center !important;
     }
@@ -6015,7 +6026,7 @@ body .terima-kasih-section,
     .section-badge-countdown,
     .section-badge-mempelai.reveal,
     .section-badge {
-        font-size: 14px !important;            
+        font-size: 12px !important;            
         letter-spacing: 2px !important;
         margin-bottom: 6px !important;
         display: inline-block !important;
