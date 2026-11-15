@@ -2,9 +2,9 @@
    PENJAGA AKSES HALAMAN (OPSIONAL / BISA DI-COMMENT DULU SAAT EDIT LOKAL)
    ========================================================================== */
 // (function() {
-//     if (localStorage.getItem('playMusic') !== 'true') {
-//         window.location.replace('opening.html');
-//     }
+//      if (localStorage.getItem('playMusic') !== 'true') {
+//          window.location.replace('index.html');
+//      }
 // })();
 
 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const now = new Date();
             const timestamp = now.toLocaleDateString("id-ID") + ', ' + 
-                              now.toLocaleTimeString("id-ID", { hour: '2-digit', minute: '2-digit', second: '2-digit' }).replace(/\./g, ':');
+                            now.toLocaleTimeString("id-ID", { hour: '2-digit', minute: '2-digit', second: '2-digit' }).replace(/\./g, ':');
 
             const data = {
                 nama: nama,
@@ -265,58 +265,49 @@ function resetInterval() {
     startSlideshow();
 }
 
+
 /* ==========================================================================
-   KONTROL MUSIK & ROTASI VINYL (FINAL LENGKAP & STABIL)
+   7. KONTROL MUSIK EKSKLUSIF & ROTASI VINYL (FINAL & ANTI-GAGAL)
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById('bgMusic');
     const vinyl = document.getElementById('vinylRecord');
     const playPauseIcon = document.getElementById('playPauseIcon');
 
-    // Fungsi universal untuk memutar musik dan menyalakan animasi putar vinyl
-    function triggerVinylSpin() {
-        if (vinyl) {
-            vinyl.classList.add('playing');
-        }
-        if (playPauseIcon) {
-            playPauseIcon.innerHTML = '&#10074;&#10074;';
-        }
-    }
-
-    // 1. Cek jika status dari halaman pembuka mengizinkan autoplay musik
-    if (music && localStorage.getItem('playMusic') === 'true') {
+    // Fungsi helper untuk menyalakan musik dan memutar vinyl secara bersamaan
+    function startMusicAndSpin() {
+        if (!music) return;
+        
         music.play().then(() => {
-            triggerVinylSpin();
+            if (vinyl) vinyl.classList.add('playing');
+            if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
+            localStorage.setItem('playMusic', 'true');
         }).catch(err => {
-            console.log("Autoplay diblokir browser, menunggu interaksi sentuhan:", err);
+            console.log("Autoplay dicegah oleh browser, menunggu interaksi pengguna:", err);
         });
     }
 
-    // 2. Trik pemicu sentuhan pertama jika autoplay diblokir oleh kebijakan browser HP/Safari
-    const handleFirstInteraction = function() {
-        if (music) {
-            music.play().then(() => {
-                triggerVinylSpin();
-                localStorage.setItem('playMusic', 'true');
-            }).catch(e => console.log("Gagal memutar audio:", e));
-        }
-        // Hapus listener setelah sentuhan pertama berhasil
-        document.removeEventListener('click', handleFirstInteraction);
-        document.removeEventListener('scroll', handleFirstInteraction);
-        document.removeEventListener('touchstart', handleFirstInteraction);
-    };
-
-    document.addEventListener('click', handleFirstInteraction);
-    document.addEventListener('scroll', handleFirstInteraction);
-    document.addEventListener('touchstart', handleFirstInteraction);
-});
-
-// Fungsi Tombol Play / Pause (Mencegah halaman melompat ke bawah & mengatur putaran vinyl)
-function toggleMusic(event) {
-    if (event) {
-        event.preventDefault(); // MENCEGAH HALAMAN SCROLL/MELOMPAT KE BAWAH
+    // Cek apakah status dari halaman pembuka/sebelumnya mengizinkan musik diputar
+    if (music && localStorage.getItem('playMusic') === 'true') {
+        startMusicAndSpin();
     }
 
+    // Jika autoplay diblokir browser, aktifkan pemicu sentuhan pertama di layar (khusus HP/Safari)
+    const triggerPlay = function() {
+        startMusicAndSpin();
+        // Hapus listener setelah berhasil merespons sentuhan pertama
+        document.removeEventListener('click', triggerPlay);
+        document.removeEventListener('scroll', triggerPlay);
+        document.removeEventListener('touchstart', triggerPlay);
+    };
+
+    document.addEventListener('click', triggerPlay);
+    document.addEventListener('scroll', triggerPlay);
+    document.addEventListener('touchstart', triggerPlay);
+});
+
+// Fungsi untuk tombol Play / Pause (ikon iPod)
+function toggleMusic() {
     const music = document.getElementById('bgMusic');
     const vinyl = document.getElementById('vinylRecord');
     const playPauseIcon = document.getElementById('playPauseIcon');
@@ -325,24 +316,16 @@ function toggleMusic(event) {
 
     if (music.paused) {
         music.play().then(() => {
-            if (vinyl) {
-                vinyl.classList.add('playing'); // Menyalakan putaran vinyl
-            }
-            if (playPauseIcon) {
-                playPauseIcon.innerHTML = '&#10074;&#10074;';
-            }
+            if (vinyl) vinyl.classList.add('playing');
+            if (playPauseIcon) playPauseIcon.innerHTML = '&#10074;&#10074;';
             localStorage.setItem('playMusic', 'true');
         }).catch(err => {
             console.log("Gagal memutar musik:", err);
         });
     } else {
         music.pause();
-        if (vinyl) {
-            vinyl.classList.remove('playing'); // Menghentikan putaran vinyl di tempat (tidak melompat)
-        }
-        if (playPauseIcon) {
-            playPauseIcon.innerHTML = '&#9658;';
-        }
+        if (vinyl) vinyl.classList.remove('playing');
+        if (playPauseIcon) playPauseIcon.innerHTML = '&#9658;';
         localStorage.setItem('playMusic', 'false');
     }
 }
@@ -404,5 +387,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (slides.length > 0) {
         startSlideshow();
+    }
+});
+
+
+/* ==========================================================================
+   10. MENANGKAP NAMA TAMU DARI URL (UNTUK HALAMAN UNDANGAN / INDEX)
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to');
+    
+    if (guestParam) {
+        const decodedGuestName = decodeURIComponent(guestParam.replace(/\+/g, ' '));
+        
+        // Cari elemen yang punya id="guestNameIndex" atau "namaTamu"
+        const guestElements = document.querySelectorAll("#guestNameIndex, #namaTamu");
+        guestElements.forEach(el => {
+            el.innerText = decodedGuestName;
+        });
+
+        // Otomatis isi kolom nama di form RSVP jika ada
+        const formNameInput = document.getElementById("nama");
+        if (formNameInput && !formNameInput.value) {
+            formNameInput.value = decodedGuestName;
+        }
     }
 });
