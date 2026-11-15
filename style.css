@@ -17,10 +17,9 @@
 }
 
 html{
-   -webkit-text-size-adjust: 100% !important; /* Mencegah Android memperbesar teks otomatis */
-    text-size-adjust: 100% !important;
     scroll-behavior:smooth;
-   
+    -webkit-text-size-adjust: 100% !important; /* Mencegah Android memperbesar teks otomatis */
+    text-size-adjust: 100% !important;
 }
 
 body {
@@ -4413,13 +4412,13 @@ body .terima-kasih-section,
     .mempelai-wrapper {
         display: flex !important;
         flex-direction: column !important;
-        gap: 14px !important;
+        gap: 16px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
         position: relative !important;
         z-index: 2 !important; 
-        padding: 0 48px 100px 48px !important; /* Diperbesar menjadi 48px agar sisi kanan-kirinya punya space kosong yang luas */
+        padding: 0 24px 80px 24px !important; /* Disesuaikan ke 24px agar lebih seimbang */
         align-items: center !important; 
         box-sizing: border-box !important;
     }
@@ -4482,15 +4481,18 @@ body .terima-kasih-section,
     .mempelai-info {
         display: flex !important;
         flex-direction: column !important;
+        width: 100% !important;              /* Memastikan wadah infonya selebar kontainer */
+        box-sizing: border-box !important;
     }
 
     .mempelai-name {
-        font-size: 1.3rem !important;        
+        font-size: 1.2rem !important;        /* Sedikit disesuaikan agar nama panjang muat dengan sempurna */
         margin-bottom: 2px !important;
         color: #D4AF37 !important;
         font-family: 'Great Vibes', cursive !important;
-        line-height: 1.1 !important;
-        white-space: nowrap !important;       
+        line-height: 1.2 !important;
+        white-space: normal !important;      /* DIUBAH: Izinkan teks turun ke baris baru jika kepanjangan */
+        word-wrap: break-word !important;     /* Mencegah teks meluber ke luar batas */
     }
 
     div.mempelai-row div.mempelai-info p.mempelai-desc,
