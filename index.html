@@ -5,22 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#D4AF37">
-    
-    <!-- TAMBAHKAN JUDUL DI SINI AGAR MUNCUL DI WHATSAPP -->
-    <meta property="og:title" content="Undangan Pernikahan - Randy & Intan">
     <meta property="og:description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.">
-    
-    <!-- URL GAMBAR (SUDAH BENAR PAKAI FOLDER /undangan/) -->
-    <meta property="og:image" content="https://anandaamalia1.github.io/undangan/1.jpeg">
-    
-    <!-- PERBAIKAN DI SINI: Tambahkan /undangan/ di og:url -->
-    <meta property="og:url" content="https://anandaamalia1.github.io/undangan/opening.html">
-    
+    <meta property="og:image" content="https://anandaamalia1.github.io/couple.png">
+    <meta property="og:url" content="https://anandaamalia1.github.io/opening.html">
     <meta property="og:type" content="website">
     <title>Undangan Pernikahan - Randy & Intan</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 
    <script>
@@ -76,12 +68,12 @@
 
           
             <!-- 4. SALAM -->
-            <h3 class="opening-salam">
+            <h3 class="opening-salam reveal">
                 Assalamu’alaikum Warahmatullahi Wabarakatuh
             </h3>
 
             <!-- 5. ISI TEKS UNDANGAN -->
-            <p class="opening-text">
+            <p class="opening-text reveal">
                 Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i sekalian untuk menghadiri acara pernikahan kami. Suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
             </p>
 
@@ -147,7 +139,7 @@
             <!-- MEMPELAI WANITA -->
             <div class="mempelai-row wanita-row reveal-right">
                 <div class="mempelai-info">
-                    <h3 class="mempelai-name">Intan Ramadhani Gunawan</h3>
+                    <h3 class="mempelai-name">Intan Ramadhani Gunawan, S.Kom</h3>
                     <p class="mempelai-desc">Putri dari</p>
                     <p class="mempelai-parents">Bapak Anwar Gunawan & Ibu Erlina Wati</p>
                 </div>
@@ -190,7 +182,7 @@
             </p>
 
             <!-- KOTAK KONTEN DOA -->
-            <div class="doa-content-box">
+            <div class="doa-content-box reveal">
                 <p class="arabic-text">
                     وَمِنْ اٰيَاتِهِ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِتَسْكُنُوْا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيَاتٍ لِقَوْمٍ يَّتَفَكَّرُوْنَ
                 </p>
@@ -208,7 +200,7 @@
      <img src="border.png" class="ornament-full-border" alt="Full Screen Border">
 </section>
 <!-- SECTION ACARA & RESEPSI -->
-<section id="acara" class="acara-section">
+<section id="acara" class="acara-section reveal">
     <!-- Kelompok 4 Bunga (Kiri Bawah) -->
     <div class="floral-group-bottom-left">
         <img src="bunga1.png" alt="Bunga 1" class="flower-item flower-1">
@@ -236,14 +228,14 @@
             <div class="single-bird-container">
                 <img src="burung.png" alt="Burung Terbang" class="single-bird">
             </div>
-            <span class="section-badge-acara">Rangkaian Acara</span>
+            <span class="section-badge-acara reveal">Rangkaian Acara</span>
             <h2 style="color: #D4AF37; font-family: 'Great Vibes', cursive; font-size: 2.8rem; margin-bottom: 8px;">Waktu & Tempat</h2>
             <p class="section-description-acara" style="color: #FFF1cf; font-size: 13px; margin-bottom: 25px;">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
         </div>
             
         <div class="acara-grid">
             <!-- Kartu Akad -->
-            <div class="acara-card">
+            <div class="acara-card reveal-left">
                 <h3>Akad Nikah</h3>
                 <div class="acara-detail-info">
                     <p><strong>Tanggal:</strong> Minggu, 06 Desember 2026</p>
@@ -254,7 +246,7 @@
             </div>
 
             <!-- Kartu Resepsi -->
-            <div class="acara-card">
+            <div class="acara-card reveal-right">
                 <h3>Resepsi</h3>
                 <div class="acara-detail-info">
                     <p><strong>Tanggal:</strong> Minggu, 06 Desember 2026</p>
@@ -299,19 +291,19 @@
             <p class="section-description-countdown" style="color: #FFF1cf; font-size: 13px; margin-bottom: 25px;">Waktu terus berjalan menuju hari pernikahan kami. Mari catat tanggalnya dan berikan doa restu Anda.</p>
             
             <div class="countdown-box">
-                <div class="countdown-item">
+                <div class="countdown-item reveal">
                     <span id="days">00</span>
                     <span class="countdown-label">Hari</span>
                 </div>
-                <div class="countdown-item">
+                <div class="countdown-item reveal">
                     <span id="hours">00</span>
                     <span class="countdown-label">Jam</span>
                 </div>
-                <div class="countdown-item">
+                <div class="countdown-item reveal">
                     <span id="minutes">00</span>
                     <span class="countdown-label">Menit</span>
                 </div>
-                <div class="countdown-item">
+                <div class="countdown-item reveal">
                     <span id="seconds">00</span>
                     <span class="countdown-label">Detik</span>
                 </div>
@@ -348,7 +340,7 @@
     <p class="section-description-galeri">Momen terindah yang terukir dalam perjalanan cinta kami.</p>
 </div>
             <!-- KONTAINER UTAMA IPOD & PIRINGAN HITAM (VINYL) -->
-            <div class="ipod-music-container">
+            <div class="ipod-music-container reveal">
                 
                 <div class="vinyl-record" id="vinylRecord">
     <img src="vinyl.png" alt="Piringan Hitam">
@@ -371,9 +363,9 @@
                     <!-- Kontrol Bawah (Tombol Panah & Play di bawah layar foto) -->
                     <div class="ipod-controls-overlay">
     <button class="ipod-control-nav-btn" onclick="changeSlide(-1)" style="font-family: monospace !important;">&#9664;&#9664;</button>
-    <button class="ipod-play-pause-btn" id="playPauseBtn" onclick="toggleMusic(event)">
-    <span id="playPauseIcon">&#9658;</span>
-</button>
+    <button class="ipod-play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">
+        <span id="playPauseIcon">&#9658;</span>
+    </button>
     <button class="ipod-control-nav-btn" onclick="changeSlide(1)" style="font-family: monospace !important;">&#9654;&#9654;</button>
 </div>
 
@@ -447,7 +439,7 @@
 </audio>
 
 <!-- SECTION LOKASI -->
-<section id="lokasi" class="lokasi-section">
+<section id="lokasi" class="lokasi-section reveal">
     <div class="floral-group-bottom-left">
         <img src="bunga1.png" alt="Bunga 1" class="flower-item flower-1">
         <img src="bunga2.png" alt="Bunga 2" class="flower-item flower-2">
@@ -478,7 +470,7 @@
             </p>
 
             <!-- KOTAK PETA & ALAMAT (FULL RESPONSIF) -->
-            <div class="map-preview-box">
+            <div class="map-preview-box reveal-left">
                 <div class="iframe-container">
                     <iframe 
                         iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1991.0426632586702!2d98.62687262202911!3d3.5678375499491666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fa4ecb2f0dd%3A0x94306b2cc8a2419f!2sFocal%20Point%20Medan!5e0!3m2!1sid!2sid!4v1793867446750!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
@@ -507,7 +499,21 @@
 
 </section>
 <!-- AMPLOP DIGITAL & ALAMAT KADO SECTION (FULL LAYAR) -->
-<section id="amplop" class="amplop-section">
+<section id="amplop" class="amplop-section reveal">
+        <div class="floral-group-bottom-left">
+        <img src="bunga1.png" alt="Bunga 1" class="flower-item flower-1">
+        <img src="bunga2.png" alt="Bunga 2" class="flower-item flower-2">
+        <img src="bunga3.png" alt="Bunga 3" class="flower-item flower-3">
+        <img src="bunga4.png" alt="Bunga 4" class="flower-item flower-4">
+    </div>
+
+    <!-- Kelompok 4 Bunga (Kanan Bawah) -->
+    <div class="floral-group-bottom-right">
+        <img src="bunga1.png" alt="Bunga 1" class="flower-item flower-1">
+        <img src="bunga2.png" alt="Bunga 2" class="flower-item flower-2">
+        <img src="bunga3.png" alt="Bunga 3" class="flower-item flower-3">
+        <img src="bunga4.png" alt="Bunga 4" class="flower-item flower-4">
+    </div>
     <div class="pearls-top-right">
         <img src="pearls.png" alt="Mutiara">
     </div>
@@ -527,7 +533,7 @@
             </p>
 
             <!-- KARTU ATM 1 (BCA) -->
-            <div class="atm-card">
+            <div class="atm-card ">
                 <div class="atm-chip"></div>
                 <div class="atm-bank">BSI</div>
                 <div class="atm-number">7364 171 708</div>
@@ -541,7 +547,7 @@
             </div>
 
             <!-- KARTU ATM 2 (MANDIRI) -->
-            <div class="atm-card">
+            <div class="atm-card ">
                 <div class="atm-chip"></div>
                 <div class="atm-bank">MANDIRI</div>
                 <div class="atm-number">1050 0173 27861</div>
@@ -581,7 +587,7 @@
                     <span class="arrow-icon">&#10097;</span>
                 </div>
                 <div class="dropdown-content" id="giftContent">
-                    <p class="gift-intro-text">Bagi tamu undangan yang ingin mengirimkan kado fisik, dapat dikirimkan melalui alamat di bawah ini:</p>
+                    <<p class="gift-intro-text">Bagi tamu undangan yang ingin mengirimkan kado fisik, dapat dikirimkan melalui alamat di bawah ini:</p>
                     <div class="address-detail">
                         <p><strong>Penerima:</strong> Intan </p>
                         <p><strong>No. HP:</strong> 0831-6055-5251</p>
@@ -596,7 +602,7 @@
 </section>
 
 <!-- SECTION 1: FORM RSVP (FULL LAYAR) -->
-<section id="rsvp" class="rsvp-section">
+<section id="rsvp" class="rsvp-section reveal">
     <!-- Kelompok 4 Bunga (Kiri Bawah) -->
     <div class="floral-group-bottom-left">
         <img src="bunga1.png" alt="Bunga 1" class="flower-item flower-1">
@@ -616,7 +622,7 @@
     <div class="container">
         <div class="reveal" style="text-align: center; color: #FFF1cf;">
             <span class="section-badge">Konfirmasi Kehadiran</span>
-            <h2 style="color: #D4AF37; font-family: 'Great Vibes', cursive; font-size: 2.8rem; margin-bottom: 8px;">RSVP</h2>
+            <h2 style="color: #D4AF37; font-family: 'Great Vibes', cursive; font-size: 2.8rem; margin-bottom: 8px;">Reservasi</h2>
             <p class="section-description" style="color: #FFF1cf; font-size: 13px; margin-bottom: 25px;">Mohon konfirmasi kehadiran serta berikan ucapan dan doa terbaik untuk kami.</p>
             
             <form id="rsvpForm">
@@ -639,7 +645,7 @@
     </div>
 </section>
 <!-- SECTION 2: DAFTAR KOMENTAR / UCAPAN (FULL LAYAR) -->
-<section id="ucapan" class="ucapan-section">
+<section id="ucapan" class="ucapan-section reveal">
     <div class="pearls-top-right">
         <img src="pearls.png" alt="Mutiara">
     </div>
@@ -674,18 +680,18 @@
                 <div class="message-list" id="messageList">
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-name">nananan</span>
+                            <span class="comment-name">..</span>
                             <span class="comment-status status-tidak">Tidak Hadir</span>
                         </div>
-                        <div class="comment-message">sorry</div>
+                        <div class="comment-message">..</div>
                         <div class="comment-time">14/10/2026, 17.14.06</div>
                     </div>
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-name">nana</span>
+                            <span class="comment-name">..</span>
                             <span class="comment-status status-hadir">Hadir</span>
                         </div>
-                        <div class="comment-message">aanugdaudj</div>
+                        <div class="comment-message">..</div>
                         <div class="comment-time">14/10/2026, 17.10.21</div>
                     </div>
                 </div>
@@ -698,7 +704,7 @@
 
 
 <!-- SECTION TERIMA KASIH / PENUTUP -->
-<section id="terima-kasih" class="terima-kasih-section">
+<section id="terima-kasih" class="terima-kasih-section reveal">
     <div class="container">
         <!-- Tambahkan kelas 'reveal' di sini agar tersembunyi dulu sebelum di-scroll -->
         <div class="reveal" style="text-align: center; color: #FFF1cf;">
